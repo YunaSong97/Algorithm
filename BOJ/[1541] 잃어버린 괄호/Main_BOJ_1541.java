@@ -1,7 +1,6 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
+public class Main_BOJ_1541 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
