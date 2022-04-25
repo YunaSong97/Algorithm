@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
-class PG_62048 {
+class PG_62050 {
     static int[][] visit;
     static int n;
     static int cnt = 0;
