@@ -1,42 +1,42 @@
-class Hand{
-    static class Left {
-        Num pos;
-        public Left(Num pos){
-            this.pos = pos;
-        }
-    }
-
-    static class Right {
-        Num pos;
-        public Right(Num pos){
-            this.pos = pos;
-        }
-    }
-}
-
-class Num{
-    int x; int y;
-
-    public Num(int x, int y){
-        this.x = x;
-        this.y = y;
-    }
-}
-
 class PG_67256 {
+    static class Hand{
+        static class Left {
+            Num pos;
+            public Left(Num pos){
+                this.pos = pos;
+            }
+        }
+
+        static class Right {
+            Num pos;
+            public Right(Num pos){
+                this.pos = pos;
+            }
+        }
+    }
+
+    static class Num{
+        int x; int y;
+
+        public Num(int x, int y){
+            this.x = x;
+            this.y = y;
+        }
+    }
+
     String answer = "";
     public String solution(int[] numbers, String hand) {
         Hand.Left left = new Hand.Left(new Num(1, 4));
         Hand.Right right = new Hand.Right(new Num(3, 4));
         Num num;
 
-        for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] == 3 || numbers[i] == 6 || numbers[i] == 9) {
-                num = new Num(numbers[i] % 3 + 3, numbers[i] / 3);
-            } else if(numbers[i] == 0){
+        for (int number : numbers) {
+            if (number == 3 || number == 6 || number == 9) {
+                num = new Num(3, number / 3);
+            } else if (number == 0) {
                 num = new Num(2, 4);
-            }else {
-                num = new Num(numbers[i] % 3, numbers[i] / 3 + 1);
+            } else {
+                num = new Num(number % 3, number / 3 + 1);
             }
             push(num, left, right, hand);
         }
