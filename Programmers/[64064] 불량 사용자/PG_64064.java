@@ -2,7 +2,6 @@ package PG;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
 
 public class PG_64064 {
     class Solution {
@@ -12,7 +11,6 @@ public class PG_64064 {
         public int solution(String[] user_id, String[] banned_id) {
             result = new HashSet<>();
             bannedUserList = new ArrayList<>();
-            Set<String> set = new HashSet<>();
 
             for (String bannedId : banned_id) {
                 // 목록의 n번째 칸에 들갈 수 있는 제재 아이디들 구함
