@@ -12,6 +12,8 @@ public class PG_17683 {
             this.endTime = endTime;
             this.title = title;
             this.sheet = sheet;
+            calPlayTimeMinute();
+            calMelody();
         }
 
         void calPlayTimeMinute() {
@@ -43,8 +45,6 @@ public class PG_17683 {
                 token[3] = token[3].replaceAll("C#", "c").replaceAll("A#", "a").replaceAll("G#", "g").replaceAll("F#", "f").replaceAll("D#", "d");
 
                 Music music = new Music(token[0], token[1], token[2], token[3]);
-                music.calPlayTimeMinute();
-                music.calMelody();
 
                 if (music.melody.contains(m)) {
                     if (music.playTime > playTime) {
