@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 
 public class SWEA_1979 {
     static boolean[][] visit;
+    static int ans;
 
     public static void main(String args[]) throws Exception {
         //System.setIn(new FileInputStream("res/input.txt"));
@@ -18,36 +19,64 @@ public class SWEA_1979 {
         for (int test_case = 1; test_case <= T; test_case++) {
             int m = sc.nextInt();
             int n = sc.nextInt();
+            ans = 0;
             visit = new boolean[m][m];
 
-            int[][] map = new int[m][n];
+            int[][] map = new int[m][m];
             for (int i = 0; i < m; i++) {
                 for (int j = 0; j < m; j++) {
-                    map[i][j]=sc.nextInt();
+                    map[i][j] = sc.nextInt();
                 }
             }
 
             for (int i = 0; i < m; i++) {
                 for (int j = 0; j < m; j++) {
                     if (map[i][j] == 1) {
-                        dfs(map, i, j);
+                        int cnt = 1;
+                        if (j == 0 || map[i][j - 1] == 0) {
+                            while (true) {
+                                j++;
+                                if(!isIn(i, j, m) || map[i][j] == 0){
+                                    break;
+                                }
+                                cnt++;
+                            }
+                            if (cnt == n) {
+                                ans++;
+
+                            }
+                        }
                     }
                 }
             }
 
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < m; j++) {
+                    if (map[j][i] == 1) {
+                        int cnt = 1;
+                        if (j == 0 || map[j-1][i] == 0) {
+                            while (true) {
+                                j++;
+                                if(!isIn(i, j, m) || map[j][i] == 0){
+                                    break;
+                                }
+                                cnt++;
+                            }
+                            if (cnt == n) {
+                                ans++;
 
+                            }
+                        }
+                    }
+                }
+            }
+            System.out.println("#"+test_case+" "+ans);
         }
     }
 
-    static void dfs(int map[][], int x, int y){
-        int dx[] = {1, 0};
-        int dy[] = {0, 1};
 
-        for (int i = 0; i < 2; i++) {
-            int nx = x + dx[i];
-            int ny = y + dy[i];
-            if(map[nx][ny]==1)
-        }
+    static boolean isIn(int x, int y, int m) {
+        return x < m && x >= 0 && y < m && y >= 0;
     }
 
 }
